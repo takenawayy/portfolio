@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodecahedron Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .side-by-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .side-by-side img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .side-by-side {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <iframe width="100%" height="auto"
+		src="https://www.youtube.com/embed/UPemzsPQeGk?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&disablekb=1&playlist=UPemzsPQeGk"
+        style="border:0; height:400px;";
+        allow="autoplay; encrypted-media">
+        </iframe>
+		<iframe width="100%" height="auto"
+		src="https://www.youtube.com/embed/LZQ2spFDMCc?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&disablekb=1&playlist=LZQ2spFDMCc"
+        style="border:0; height:400px;";
+        allow="autoplay; encrypted-media">
+        </iframe>
+        <div class="gallery-item">
+            <img src="media/dodecahedron/1.png" alt="Image 1">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/2.png" alt="Image 2">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/3.png" alt="Image 3">
+        </div>
+
+        <div class="side-by-side">
+            <img src="media/dodecahedron/small1.png" alt="Small Image 1">
+            <img src="media/dodecahedron/small2.gif" alt="Small Image 2">
+        </div>
+
+        <div class="gallery-item">
+            <video controls>
+                <source src="media/dodecahedron/video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/4.png" alt="Image 4">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/5.png" alt="Image 5">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/6.png" alt="Image 6">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/nesting.jpg" alt="Nesting 1">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/nesting2.jpg" alt="Nesting 2">
+        </div>
+
+        <div class="gallery-item">
+            <img src="media/dodecahedron/nesting3.jpg" alt="Nesting 3">
+        </div>
+    </div>
+</body>
+</html>

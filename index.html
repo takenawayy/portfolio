@@ -1,0 +1,84 @@
+<html lang="eng">
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="styles-a.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button class="menuToggle" onclick="toggleMenu()">|  |  |</button>
+        <div class="container leftpanel" id="leftpanel">
+            <div class="links">
+                <a href="#">takenawayy.github.io</a>
+            </div>
+            <div class="left top">
+                <div class="icon">
+                    <p class="namefirst"><strong>ISAL</strong></p>
+                    <p class="namelast"><strong>SHUKLA</strong></p>
+                </div>
+                <div class="menu">
+                    <hr>
+                    <a href="New Resume-2.pdf" target="display" class="mains">RESUME</a>
+                </div>
+            </div>
+            <div class="left center">
+                <div class="scroll-list">
+                    <h8>PROJECTS</h8>
+                    <a href="Task Lighting For Wellbeing and Sustainability.pdf" target="display">TASK LIGHT FOR WELL-BEING</a>
+                    <a href="Solar Pipe Lighting.pdf" target="display">SOLAR PIPE LIGHTING FOR MUSEUM</a>
+                    <a href="Tyre tubes installation.pdf" target="display">TYRE TUBES INSTALLATION</a>
+                    <a href="dodecahedron.html" target="display">OPTICAL LIGHT ILLUSION</a>
+                    <a href="Ruminations.pdf" target="display">RUMINATIONS: A COMIC</a>
+                    <a href="Scenography.pdf" target="display">SCENOGRAPHIC UNDERWORLD SET</a>
+                    <a href="sonder.html" target="display">SONDER - AN INSTALLATION</a>
+                    <a href="https://www.artom.in/intertwined" target="display">ARTOM ONLINE GALLERY</a>
+                </div>
+            </div>
+            <div class="left bottom">
+                <div class="desc-box">
+                    <div class="socials">
+                        <br>
+                        <a class=desc href="https://www.linkedin.com/in/isal-shukla-6b6094115/">LinkedIn</a>                        
+                        <a class=desc href="https://www.behance.net/shuklaisal654e">Behance</a>
+                        <a class=desc href="https://www.instagram.com/isal.off/">Instagram</a>
+                    </div>
+                    <p class="desc">shuklaisal@gmail.com</p>
+                    <p class="desc">+91-99582812XX</p>
+                </div>
+            </div>
+        </div>
+        <div class="container right">
+            <iframe name="display" class="display" src="placeholder.html"></iframe>
+        </div>
+        <script>
+        // Show sidebar by default on mobile when first visiting
+        window.addEventListener('DOMContentLoaded', () => {
+            const leftPanel = document.getElementById('leftpanel');
+            const iframe = document.querySelector('iframe[name="display"]');
+            
+            // Check if iframe has content loaded
+            if (window.innerWidth <= 768 && !iframe.src) {
+                leftPanel.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            }
+        });
+
+        function toggleMenu() {
+            const leftPanel = document.getElementById('leftpanel');
+            leftPanel.classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // Close sidebar when clicking on links (mobile only)
+        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        document.getElementById('leftpanel').classList.remove('active');
+                        document.body.classList.remove('sidebar-open');
+                    }, 300);
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -1,19 +1,32 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-                background-color: #000000;
-            }
-        </style>
-    </head>
-    <body>
-        <br>
-        <p style="font-family:helvetica; font-size: 12px; color:rgb(255, 255, 255); text-align:center; margin-top:40vh;">
-        Select a tab from the menu to view here.
-    </p>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Display</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #b5d3f4;
+    }
+    img {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+      border: none;
+      outline: none;
+    }
+    a, a:focus, a:active {
+      outline: none;
+    }
+    a img {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <img src="About.png" alt="About">
+</body>
 </html>
-

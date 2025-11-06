@@ -17,8 +17,9 @@
                 </div>
                 <div class="menu">
                     <hr>
-                    <a href="New Resume-2.pdf" target="display" class="mains">RESUME</a>
+                    <a href="New Resume.pdf" target="display" class="mains">RESUME</a>
                 </div>
+
             </div>
             <div class="left center">
                 <div class="scroll-list">
@@ -49,7 +50,28 @@
         <div class="container right">
             <iframe name="display" class="display" src="placeholder.html"></iframe>
         </div>
+
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <span>Loading...</span>
+        </div>
+
         <script>
+        const loader = document.getElementById('loader');
+        const iframe = document.querySelector('iframe[name="display"]');
+
+        // Show loader whenever iframe starts loading
+        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
+        link.addEventListener('click', () => {
+            loader.classList.remove('hidden');
+        });
+        });
+
+        // Hide loader when iframe finishes loading
+        iframe.addEventListener('load', () => {
+        loader.classList.add('hidden');
+        });
+
         // Show sidebar by default on mobile when first visiting
         window.addEventListener('DOMContentLoaded', () => {
             const leftPanel = document.getElementById('leftpanel');

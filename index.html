@@ -11,13 +11,12 @@
                 <a href="#">takenawayy.github.io</a>
             </div>
             <div class="left top">
-                <div class="icon">
+                <div class="icon" id="homeIcon">
                     <p class="namefirst"><strong>ISAL</strong></p>
                     <p class="namelast"><strong>SHUKLA</strong></p>
                 </div>
                 <div class="menu">
                     <hr>
-                    <a href="placeholder.html" target="display" class="mains">ABOUT</a>
                     <a href="New Resume.pdf" target="display" class="mains">RESUME</a>
                 </div>
 
@@ -38,6 +37,7 @@
             <div class="left bottom">
                 <div class="desc-box">
                     <div class="socials">
+                        <br>
                         <br>
                         <a class=desc href="https://www.linkedin.com/in/isal-shukla-6b6094115/">LinkedIn</a>                        
                         <a class=desc href="https://www.behance.net/shuklaisal654e">Behance</a>
@@ -61,16 +61,42 @@
         const loader = document.getElementById('loader');
         const iframe = document.querySelector('iframe[name="display"]');
 
+        // Handle ALL PDF links on ALL devices
+        function handlePDFLink(event, url) {
+            if (url.toLowerCase().endsWith('.pdf')) {
+                event.preventDefault();
+                loader.classList.remove('hidden');
+                // Use PDF.js viewer for all PDFs
+                iframe.src = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + url)}`;
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        document.getElementById('leftpanel').classList.remove('active');
+                        document.body.classList.remove('sidebar-open');
+                    }, 300);
+                }
+            }
+        }
+
+        // Add PDF handler to all links
+        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.toLowerCase().endsWith('.pdf')) {
+                link.addEventListener('click', (e) => handlePDFLink(e, href));
+            }
+        });
+
         // Show loader whenever iframe starts loading
         document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
-        link.addEventListener('click', () => {
-            loader.classList.remove('hidden');
-        });
+            link.addEventListener('click', () => {
+                loader.classList.remove('hidden');
+            });
         });
 
         // Hide loader when iframe finishes loading
         iframe.addEventListener('load', () => {
-        loader.classList.add('hidden');
+            loader.classList.add('hidden');
         });
 
         // Show sidebar by default on mobile when first visiting
@@ -78,7 +104,6 @@
             const leftPanel = document.getElementById('leftpanel');
             const iframe = document.querySelector('iframe[name="display"]');
             
-            // Check if iframe has content loaded
             if (window.innerWidth <= 768 && !iframe.src) {
                 leftPanel.classList.add('active');
                 document.body.classList.add('sidebar-open');
@@ -102,6 +127,25 @@
                 }
             });
         });
+
+        const homeIcon = document.getElementById('homeIcon');
+        homeIcon.addEventListener('click', () => {
+            iframe.src = 'placeholder.html';
+            loader.classList.remove('hidden');
+        });
+
+        homeIcon.addEventListener('click', () => {
+            iframe.src = 'placeholder.html';
+            loader.classList.remove('hidden');
+
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.getElementById('leftpanel').classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+                }, 300);
+            }
+        });
+
         </script>
     </body>
 </html>

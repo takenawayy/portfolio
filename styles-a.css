@@ -1,19 +1,30 @@
 body, html {
     margin: 0;
     height: 100vh;
+    width: 100%;
     background-color: rgb(0, 0, 0);
+    overflow: hidden; /* ADD THIS LINE */
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 110%;
+    overflow: hidden; /* ADD THIS LINE */
 }
 
 body {
     display: flex;
     flex-direction: row;
+    zoom: 1.3; /* Keep your zoom */
+    overflow: hidden; /* ADD THIS LINE */
+    overflow-x: hidden;
 }
 
 * {
     box-sizing: border-box;
 }
 
-temp {
+* {
   border: 0 !important;
 }
 
@@ -44,13 +55,6 @@ a:hover {
     width: 300px;
     background-color: rgb(255, 152, 18);
     animation: colorShift 30s ease-in-out infinite alternate;
-}
-
-/* gradual color transition */
-@keyframes colorShift {
-    0%   { background-color: rgb(255, 152, 18); }
-    50%  { background-color: rgba(255, 197, 122, 0.846); }
-    100% { background-color: rgb(255, 203, 175); }
 }
 
 .menuToggle {
@@ -86,6 +90,8 @@ a:hover {
 
 .right {
     flex: 2;
+    min-width: 0;  /* This allows flex item to shrink below content size */
+    background-color: rgb(254, 254, 254);
 }
 
 .top {
@@ -216,7 +222,6 @@ hr {
 }
 
 .center {
-
     padding: 20px;
     height: 200px;
     overflow-y: auto;
@@ -226,11 +231,6 @@ hr {
     height: 200;
     border-top: 1px solid #dedede;
     background-color: blue;
-}
-
-.display embed{
-    height: 100%;
-    width: 100%;
 }
 
 .scroll-list {
@@ -332,13 +332,18 @@ hr {
     }
 
     .right {
-        width: 100%;
-        height: 100vh;
-        margin-top: 0;
+        flex: 2;
+        min-width: 0;
+        background-color: rgb(254, 254, 254);
+        width: 100%; /* ADD THIS */
     }
 
     body.sidebar-open .right {
         display: none;
+    }
+
+    .right {
+        width: 100%;
     }
 
     /* Overlay spinner styling */

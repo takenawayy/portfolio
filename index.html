@@ -1,151 +1,105 @@
 <html lang="eng">
     <head>
         <title>Home</title>
-        <link rel="stylesheet" href="styles-a.css">
+        <link rel="stylesheet" href="stylish.css">
+        <link rel="stylesheet" href="font.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <button class="menuToggle" onclick="toggleMenu()">|  |  |</button>
-        <div class="container leftpanel" id="leftpanel">
-            <div class="links">
-                <a href="#">takenawayy.github.io</a>
+        <div id="sidebar">
+            <div class="icon" id="homeIcon">
+                <p class="namefirst"><strong>ISAL</strong></p>
+                <p class="namelast"><strong>SHUKLA</strong></p>
             </div>
-            <div class="left top">
-                <div class="icon" id="homeIcon">
-                    <p class="namefirst"><strong>ISAL</strong></p>
-                    <p class="namelast"><strong>SHUKLA</strong></p>
-                </div>
-                <div class="menu">
-                    <hr>
-                    <a href="New Resume.pdf" target="display" class="mains">RESUME</a>
-                </div>
-
+            <br>
+            <hr>
+            <br>
+            <a href="about.html" target="display" class="mains">About</a>
+            <br>
+            <a href="projects.html" target="display" class="mains">Projects</a>
+            <br>
+            <a href="New Resume.pdf#page=1&zoom=page-width&pagemode=thumbs" target="display" class="mains">Resume</a>
+            <div id="resizer">
+                <div class="line"></div>
             </div>
-            <div class="left center">
-                <div class="scroll-list">
-                    <h8>PROJECTS</h8>
-                    <a href="Task Lighting For Wellbeing and Sustainability.pdf" target="display">TASK LIGHT FOR WELL-BEING</a>
-                    <a href="Solar Pipe Lighting.pdf" target="display">SOLAR PIPE LIGHTING FOR MUSEUM</a>
-                    <a href="Tyre tubes installation.pdf" target="display">TYRE TUBES INSTALLATION</a>
-                    <a href="dodecahedron.html" target="display">OPTICAL LIGHT ILLUSION</a>
-                    <a href="Ruminations.pdf" target="display">RUMINATIONS: A COMIC</a>
-                    <a href="Scenography.pdf" target="display">SCENOGRAPHIC UNDERWORLD SET</a>
-                    <a href="sonder.html" target="display">SONDER - AN INSTALLATION</a>
-                    <a href="https://www.artom.in/intertwined" target="display">ARTOM ONLINE GALLERY</a>
-                </div>
-            </div>
-            <div class="left bottom">
-                <div class="desc-box">
-                    <div class="socials">
-                        <br>
-                        <br>
-                        <a class=desc href="https://www.linkedin.com/in/isal-shukla-6b6094115/">LinkedIn</a>                        
-                        <a class=desc href="https://www.behance.net/shuklaisal654e">Behance</a>
-                        <a class=desc href="https://www.instagram.com/isal.off/">Instagram</a>
-                    </div>
-                    <p class="desc">shuklaisal@gmail.com</p>
-                    <p class="desc">+91-99582812XX</p>
-                </div>
+            <div class="bottomItem main">
+                <p class="desc">shuklaisal@gmail.com</p>
+                <a href="https://www.instagram.com/isal.off/" target="_blank" class="social">Instagram</a>
+                <a href="https://www.linkedin.com/in/isal-shukla-6b6094115/" target="blank" class="social">LinkedIn</a>
+                <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a>
             </div>
         </div>
-        <div class="container right">
-            <iframe name="display" class="display" src="placeholder.html"></iframe>
+        <button id="openSidebarBtn">+</button>
+        <div id="main">
+            <iframe name="display" class="display" src="projects.html"></iframe>
         </div>
+    </body>
 
-        <div class="loader" id="loader">
-            <div class="spinner"></div>
-            <span>Loading...</span>
-        </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        let isResizing = false;
 
-        <script>
-        const loader = document.getElementById('loader');
-        const iframe = document.querySelector('iframe[name="display"]');
+        sidebar.addEventListener('mousedown', (e) => {
+            const edgeZone = 100; // grab zone size
 
-        // Handle ALL PDF links on ALL devices
-        function handlePDFLink(event, url) {
-            if (url.toLowerCase().endsWith('.pdf')) {
-                event.preventDefault();
-                loader.classList.remove('hidden');
-                // Use PDF.js viewer for all PDFs
-                iframe.src = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + url)}`;
-                
-                // Close sidebar on mobile
-                if (window.innerWidth <= 768) {
-                    setTimeout(() => {
-                        document.getElementById('leftpanel').classList.remove('active');
-                        document.body.classList.remove('sidebar-open');
-                    }, 300);
-                }
-            }
-        }
-
-        // Add PDF handler to all links
-        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.toLowerCase().endsWith('.pdf')) {
-                link.addEventListener('click', (e) => handlePDFLink(e, href));
+            if (sidebar.offsetWidth - e.clientX < edgeZone) {
+                isResizing = true;
+                document.body.style.cursor = 'col-resize';
             }
         });
 
-        // Show loader whenever iframe starts loading
-        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
-            link.addEventListener('click', () => {
-                loader.classList.remove('hidden');
-            });
-        });
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
 
-        // Hide loader when iframe finishes loading
-        iframe.addEventListener('load', () => {
-            loader.classList.add('hidden');
-        });
-
-        // Show sidebar by default on mobile when first visiting
-        window.addEventListener('DOMContentLoaded', () => {
-            const leftPanel = document.getElementById('leftpanel');
-            const iframe = document.querySelector('iframe[name="display"]');
-            
-            if (window.innerWidth <= 768 && !iframe.src) {
-                leftPanel.classList.add('active');
-                document.body.classList.add('sidebar-open');
+            const newWidth = e.clientX;
+            if (newWidth > 250 && newWidth < window.innerWidth - 100) {
+                sidebar.style.width = newWidth + 'px';
             }
         });
 
-        function toggleMenu() {
-            const leftPanel = document.getElementById('leftpanel');
-            leftPanel.classList.toggle('active');
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = 'default';
+        });
+
+
+        /* Sidebar toggle functionality */
+        const toggleBtn = document.getElementById('openSidebarBtn');
+
+        toggleBtn.addEventListener('click', () => {
+            if (sidebar.style.display === 'block') {
+                sidebar.style.display = 'none';
+                toggleBtn.textContent = '+';
+                toggleBtn.style.left = '0px';        // collapsed position
+            } else {
+                sidebar.style.display = 'block';
+                toggleBtn.textContent = '×';
+                toggleBtn.style.left = sidebar.offsetWidth + 'px';   // follow sidebar
+            }
+
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 600) {
+                sidebar.style.display = 'block';   // restore sidebar on desktop
+                toggleBtn.textContent = '×';
+                toggleBtn.style.left = 0 + 'px'; 
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 600) {
+                sidebar.style.display = 'block'; 
+                toggleBtn.textContent = '×';
+                toggleBtn.style.left = sidebar.offsetWidth + 'px'; 
+            }
+        });
+        
+
+        function toggleSidebar() {
             document.body.classList.toggle('sidebar-open');
         }
 
-        // Close sidebar when clicking on links (mobile only)
-        document.querySelectorAll('.scroll-list a, .mains').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    setTimeout(() => {
-                        document.getElementById('leftpanel').classList.remove('active');
-                        document.body.classList.remove('sidebar-open');
-                    }, 300);
-                }
-            });
-        });
-
-        const homeIcon = document.getElementById('homeIcon');
-        homeIcon.addEventListener('click', () => {
-            iframe.src = 'placeholder.html';
-            loader.classList.remove('hidden');
-        });
-
-        homeIcon.addEventListener('click', () => {
-            iframe.src = 'placeholder.html';
-            loader.classList.remove('hidden');
-
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    document.getElementById('leftpanel').classList.remove('active');
-                    document.body.classList.remove('sidebar-open');
-                }, 300);
-            }
-        });
-
-        </script>
-    </body>
+        
+    </script>
 </html>

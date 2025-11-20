@@ -18,9 +18,7 @@
             <br>
             <a href="projects.html" target="display" class="mains">Projects</a>
             <br>
-            <a href="pdfjs/web/viewer.html?file=../New Resume.pdf#page=1&zoom=page-width&pagemode=thumbs" 
-            target="display"
-            class="mains">Resume</a>
+            <a href="New Resume.pdf#page=1&zoom=page-width&pagemode=thumbs" target="display" class="mains">Resume</a>
             <div id="resizer">
                 <div class="line"></div>
             </div>
@@ -31,7 +29,6 @@
                 <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a>
             </div>
         </div>
-        <button id="openSidebarBtn">+</button>
         <div id="main">
             <iframe name="display" class="display" src="projects.html"></iframe>
         </div>
@@ -63,45 +60,6 @@
             isResizing = false;
             document.body.style.cursor = 'default';
         });
-
-
-        /* Sidebar toggle functionality */
-        const toggleBtn = document.getElementById('openSidebarBtn');
-
-        toggleBtn.addEventListener('click', () => {
-            if (sidebar.style.display === 'block') {
-                sidebar.style.display = 'none';
-                toggleBtn.textContent = '+';
-                toggleBtn.style.left = '0px';        // collapsed position
-            } else {
-                sidebar.style.display = 'block';
-                toggleBtn.textContent = '×';
-                toggleBtn.style.left = sidebar.offsetWidth + 'px';   // follow sidebar
-            }
-
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 600) {
-                sidebar.style.display = 'block';   // restore sidebar on desktop
-                toggleBtn.textContent = '×';
-                toggleBtn.style.left = 0 + 'px'; 
-            }
-        });
-        
-        window.addEventListener('resize', () => {
-            if (window.innerWidth < 600) {
-                sidebar.style.display = 'block'; 
-                toggleBtn.textContent = '×';
-                toggleBtn.style.left = sidebar.offsetWidth + 'px'; 
-            }
-        });
-        
-
-        function toggleSidebar() {
-            document.body.classList.toggle('sidebar-open');
-        }
-
         
     </script>
 </html>

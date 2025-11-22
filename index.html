@@ -18,17 +18,17 @@
             </div>
             <a href="about.html" target="display" class="mains">About</a>
             <a href="projects.html" target="display" class="mains">Projects</a>
-            <a href="pdfjs/web/viewer.html?file=../New Resume.pdf#page=1&zoom=page-width&pagemode=thumbs" 
+            <a href="pdfjs/web/viewer.html?file=/New-Resume.pdf#page=1&zoom=page-height&pagemode=none" 
             target="display"
             class="mains">Resume</a>
             <div id="resizer">
                 <div class="line"></div>
             </div>
             <div class="bottomItem main">
-                <p class="desc">shuklaisal@gmail.com</p><br>
-                <a href="https://www.instagram.com/isal.off/" target="_blank" class="social">Instagram</a>
-                <a href="https://www.linkedin.com/in/isal-shukla-6b6094115/" target="blank" class="social">LinkedIn</a>
-                <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a>
+                <a href="mailto:shuklaisal@gmail.com" class="desc">shuklaisal@gmail.com</a><br>
+                <a href="https://www.linkedin.com/in/isal-shukla-6b6094115/" target="blank" class="social">LinkedIn</a><span> | </span>
+                <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a><span> | </span><a href="https://www.instagram.com/isal.off/" target="_blank" class="social">Instagram</a>
+                <br><br><p>© 2020-2025 Isal Shukla</p>
             </div>
         </div>
         <button id="openSidebarBtn">+</button>
@@ -39,31 +39,6 @@
 
     <script>
         const sidebar = document.getElementById('sidebar');
-        let isResizing = false;
-
-        sidebar.addEventListener('mousedown', (e) => {
-            const edgeZone = 100; // grab zone size
-
-            if (sidebar.offsetWidth - e.clientX < edgeZone) {
-                isResizing = true;
-                document.body.style.cursor = 'col-resize';
-            }
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isResizing) return;
-
-            const newWidth = e.clientX;
-            if (newWidth > 250 && newWidth < window.innerWidth - 100) {
-                sidebar.style.width = newWidth + 'px';
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isResizing = false;
-            document.body.style.cursor = 'default';
-        });
-
 
         /* Sidebar toggle functionality */
         const toggleBtn = document.getElementById('openSidebarBtn');
@@ -78,13 +53,6 @@
             }
 
         });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 600) {
-                sidebar.style.display = 'block';   // restore sidebar on desktop
-                toggleBtn.textContent = '×';
-            }
-        });
         
         window.addEventListener('resize', () => {
             if (window.innerWidth < 600) {
@@ -92,12 +60,19 @@
                 toggleBtn.textContent = '×';
             }
         });
-        
 
         function toggleSidebar() {
             document.body.classList.toggle('sidebar-open');
         }
 
-        
+        const navLinks = document.querySelectorAll('.mains');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 600) {
+                    sidebar.style.display = 'none';
+                    toggleBtn.textContent = '+';
+                }
+            });
+        });
     </script>
 </html>

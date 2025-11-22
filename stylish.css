@@ -57,79 +57,38 @@
       padding: 0px;
     }
 
-    /* icon */
-    .namefirst:hover {
-        height: fit-content;
-        font-size: 30px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        color: rgb(255, 39, 39);
-        font-family: helvetica;
-        letter-spacing: px;               /* space between letters */
-        word-spacing: 4px;                /* space between words */
-        transform: scaleX(3.0);
-        transform-origin: left;
+    .icon {
+        display: block;        /* forces each on its own line */
+        width: 100%;           /* makes them reserve full width */
+        overflow: hidden;
     }
+.namefirst,
+.namelast {
+    line-height: 1;
+    font-size: 30px;
+    color: black;
+    font-family: helvetica;
+    word-spacing: 4px;
+    transform-origin: left;
+}
 
-    .namefirst {
-        height: fit-content;
-        font-size: 30px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        color: rgb(0, 0, 0);
-        font-family: helvetica;
-        letter-spacing: px;               /* space between letters */
-        word-spacing: 4px;                 /* space between words */
-        transform: scaleX(2.0);
-        transform-origin: left;
-    }
+/* individual stretch values */
+.namefirst {
+    transform: scaleX(1.5);
+}
 
-    .namelast {
-        height: fit-content;
-        font-size: 30px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        color: rgb(0, 0, 0);
-        font-family: helvetica;
-        letter-spacing: px;               /* space between letters */
-        word-spacing: 4px;                 /* space between words */
-        transform: scaleX(1.0);
-        transform-origin: left;
-    }
+.namelast {
+    transform: scaleX(1.8);
+}
 
-    .namelast:hover {
-        height: fit-content;
-        font-size: 30px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        color: rgb(255, 53, 30);
-        font-family: helvetica;
-        letter-spacing: px;               /* space between letters */
-        word-spacing: 4px;                 /* space between words */
-        transform: scaleX(1.6);
-        transform-origin: left;
-    }
+.namefirst {
+    animation: stretchFirst 8s ease-in-out infinite alternate;
+}
 
-    .namefirst {
-        animation: stretchFirst 18s ease-in-out infinite alternate;
-    }
+.namelast {
+    animation: stretchLast 8s ease-in-out infinite alternate-reverse;
+}
 
-    .namelast {
-        animation: stretchLast 18s ease-in-out infinite alternate-reverse;
-    }
-
-    /* pause animation + apply hover scale */
-    .namefirst:hover {
-        animation-play-state: paused;
-        transform: scaleX(3.0);
-        transition: transform 0.3s ease;
-    }
-
-    .namelast:hover {
-        animation-play-state: paused;
-        transform: scaleX(1.6);
-        transition: transform 0.3s ease;
-    }
 
     @keyframes stretchFirst {
         0%   { transform: scaleX(2.0); }
@@ -160,8 +119,16 @@
 
     @media (max-width: 768px) {
 
+
     #sidebar {
         display: none;     /* Hidden by default */
+        position: fixed;   /* ADD THIS - makes it overlay */
+        top: 0;            /* ADD THIS */
+        left: 0;           /* ADD THIS */
+        height: 100vh;     /* ADD THIS - full height */
+        width: 300px;      /* Keep or adjust as needed */
+        z-index: 1000;     /* ADD THIS - ensures it's on top */
+        background: white; /* ADD THIS - so content behind isn't visible */
     }
 
     #openSidebarBtn {
@@ -171,8 +138,9 @@
         padding: 8 16 8 16;
         border: none;
         background: white;
-        font-size: 32px;   /* your icon/text size */
+        font-size: 32px;
         cursor: pointer;
         border: 1px solid black;
+        z-index: 999;      /* ADD THIS - keeps button accessible but below sidebar */
     }
-    }
+}

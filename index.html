@@ -11,13 +11,13 @@
                 <p class="namefirst"><strong>ISAL</strong></p>
                 <p class="namelast"><strong>SHUKLA</strong></p>
             </div>
-            <br>
-            <hr>
-            <br>
+            <div class="divider">
+                <br>
+                <hr>
+                <br>
+            </div>
             <a href="about.html" target="display" class="mains">About</a>
-            <br>
             <a href="projects.html" target="display" class="mains">Projects</a>
-            <br>
             <a href="pdfjs/web/viewer.html?file=../New Resume.pdf#page=1&zoom=page-width&pagemode=thumbs" 
             target="display"
             class="mains">Resume</a>
@@ -25,7 +25,7 @@
                 <div class="line"></div>
             </div>
             <div class="bottomItem main">
-                <p class="desc">shuklaisal@gmail.com</p>
+                <p class="desc">shuklaisal@gmail.com</p><br>
                 <a href="https://www.instagram.com/isal.off/" target="_blank" class="social">Instagram</a>
                 <a href="https://www.linkedin.com/in/isal-shukla-6b6094115/" target="blank" class="social">LinkedIn</a>
                 <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a>
@@ -72,11 +72,9 @@
             if (sidebar.style.display === 'block') {
                 sidebar.style.display = 'none';
                 toggleBtn.textContent = '+';
-                toggleBtn.style.left = '0px';        // collapsed position
             } else {
                 sidebar.style.display = 'block';
                 toggleBtn.textContent = '×';
-                toggleBtn.style.left = sidebar.offsetWidth + 'px';   // follow sidebar
             }
 
         });
@@ -85,7 +83,6 @@
             if (window.innerWidth > 600) {
                 sidebar.style.display = 'block';   // restore sidebar on desktop
                 toggleBtn.textContent = '×';
-                toggleBtn.style.left = 0 + 'px'; 
             }
         });
         
@@ -93,7 +90,6 @@
             if (window.innerWidth < 600) {
                 sidebar.style.display = 'block'; 
                 toggleBtn.textContent = '×';
-                toggleBtn.style.left = sidebar.offsetWidth + 'px'; 
             }
         });
         

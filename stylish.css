@@ -16,14 +16,22 @@
       padding: 20px;
     }
 
+    .links {
+        flex-wrap: wrap;
+    }
+
     .mains {
         font-size: 1em;
         color: inherit;
         display: block;
+        padding: 10px;
+        text-decoration: none;
     }
 
     .mains:hover{
-        color: rgb(255, 0, 212);
+        outline: 1px solid grey;
+        outline-offset: -1px;
+        text-decoration: underline;
     }
     
     #resizer {
@@ -150,20 +158,21 @@
         display: none; /* Hidden on desktop */
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
 
     #sidebar {
         display: none;     /* Hidden by default */
     }
 
     #openSidebarBtn {
+        right: 0px;
         display: block;
         position: fixed;
-        left: 0;
         padding: 8 16 8 16;
         border: none;
-        background: none;
-        font-size: 30px;   /* your icon/text size */
+        background: white;
+        font-size: 32px;   /* your icon/text size */
         cursor: pointer;
+        border: 1px solid black;
     }
     }

@@ -18,17 +18,14 @@
             </div>
             <a href="about.html" target="display" class="mains">About</a>
             <a href="projects.html" target="display" class="mains">Projects</a>
-            <a href="pdfjs/web/viewer.html?file=/New-Resume.pdf#page=1&zoom=page-height&pagemode=none" 
-            target="display"
-            class="mains">Resume</a>
+            <a href="resume.html" target="display" class="mains">Resume</a>
             <div id="resizer">
                 <div class="line"></div>
             </div>
             <div class="bottomItem main">
-                <a href="mailto:shuklaisal@gmail.com" class="desc">shuklaisal@gmail.com</a><br>
+                <a href="mailto:shuklaisal@gmail.com" class="desc">shuklaisal@gmail.com</a><br><br>
                 <a href="https://www.linkedin.com/in/isal-shukla-6b6094115/" target="blank" class="social">LinkedIn</a><span> | </span>
                 <a href="https://www.behance.net/shuklaisal654e?" target="blank" class="social">Behance</a><span> | </span><a href="https://www.instagram.com/isal.off/" target="_blank" class="social">Instagram</a>
-                <br><br><p>© 2020-2025 Isal Shukla</p>
             </div>
         </div>
         <button id="openSidebarBtn">+</button>
@@ -54,13 +51,6 @@
 
         });
         
-        window.addEventListener('resize', () => {
-            if (window.innerWidth < 600) {
-                sidebar.style.display = 'block'; 
-                toggleBtn.textContent = '×';
-            }
-        });
-
         function toggleSidebar() {
             document.body.classList.toggle('sidebar-open');
         }
